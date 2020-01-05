@@ -14,6 +14,20 @@ module.exports = app => {
   });
 
   app.get("/livros", (req, res) => {
-    res.marko(require("../views/livros/listagem/listagem.marko"));
+    res.marko(
+            require("../views/livros/listagem/listagem.marko"),
+            {
+                livros: [
+                    {
+                        id: 1,
+                        title: 'Node basics'
+                    },
+                    {
+                        id: 2,
+                        title: 'Advanced Node'
+                    }
+                ]
+            }
+        );
   });
 };
