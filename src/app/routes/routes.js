@@ -1,4 +1,5 @@
-const db = require('../../config/database');
+const LivroDao = require("../../infra/livro-dao");
+const db = require("../../config/database");
 
 module.exports = app => {
   app.get("/", (req, res) => {
@@ -16,14 +17,12 @@ module.exports = app => {
   });
 
   app.get("/livros", (req, res) => {
+    const livroDao = new LivroDao(db);
 
-    db.all('select * from livros', (error, result) => {
-        res.marko(
-            require("../views/livros/listagem/listagem.marko"),
-            {
-                livros: result
-            }
-        );
+    livroDao.list((error, result) => {
+      res.marko(require("../views/livros/listagem/listagem.marko"), {
+        livros: result
+      });
     });
   });
 };
