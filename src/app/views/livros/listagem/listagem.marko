@@ -7,12 +7,16 @@
 
         <table>
             <tr>
-                <td>ID</td>
-                <td>Título</td>
+                <td><b>ID</b></td>
+                <td><b>Título</b></td>
+                <td><b>Descrição</b></td>
+                <td><b>Preço</b></td>
             </tr>
             <tr for(livro in data.livros)>
                 <td>${ livro.id }</td>
                 <td>${ livro.titulo }</td>
+                <td>${ livro.descricao }</td>
+                <td>${ livro.preco }</td>
             </tr>
         </table> 
     </body> 
